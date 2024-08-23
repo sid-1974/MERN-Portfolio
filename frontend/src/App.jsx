@@ -5,6 +5,9 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Home from './components/Home';
 import Services from './components/Services';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+
 
 const App = () => {
   return (

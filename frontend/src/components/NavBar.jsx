@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import "../css/Main.css";
+import HamburgerButton from './HamburgerButton';
 
 function NavBar() {
   const [activeLink, setActiveLink] = useState('home');
   const [isScrolling, setIsScrolling] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleScroll = () => {
-    const scrollPosition = window.scrollY + window.innerHeight / 2; // Consider middle of viewport for better accuracy
+    const scrollPosition = window.scrollY + window.innerHeight / 2;
 
     const sections = ['home', 'about', 'service', 'contact'];
     let currentSection = '';
@@ -26,17 +28,20 @@ function NavBar() {
   };
 
   const handleClick = (section) => {
-    setIsScrolling(false); // Disable smooth scrolling on click
+    setIsScrolling(false);
     setActiveLink(section);
+    setIsMenuOpen(false);
 
-    // Reset smooth scrolling after click
-    setTimeout(() => setIsScrolling(true), 500); // Adjust timeout to match the scroll duration
+    setTimeout(() => setIsScrolling(true), 500);
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
   };
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
 
-    // Set initial scroll behavior
     document.documentElement.classList.add('smooth-scroll');
 
     return () => {
@@ -57,7 +62,8 @@ function NavBar() {
   return (
     <nav className="navbar">
       <div className="logo">TRAINER</div>
-      <ul className="nav-links">
+      <HamburgerButton isOpen={isMenuOpen} onClick={toggleMenu} />
+      <ul className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
         <li>
           <Link
             to="home"

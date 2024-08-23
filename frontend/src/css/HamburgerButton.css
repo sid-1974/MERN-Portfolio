@@ -1,0 +1,14 @@
+.hamburger-button {
+    background: none;
+    border: none;
+    color: var(--secondary-color); /* Adjust color as needed */
+    font-size: 1.5rem; /* Adjust size as needed */
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .hamburger-button:hover {
+    color: rgb(29, 181, 241); /* Hover color */
+  }
+  
