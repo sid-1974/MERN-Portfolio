@@ -1,0 +1,77 @@
+/* Reset margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+/* Full-width nav */
+.dash-navbar {
+  background-color: #333;
+  padding: 1rem;
+  text-align: center;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.dashboard-h1 {
+  color: white;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Dashboard container to hold sidebar and content */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  padding-top: 4rem; /* Account for fixed navbar */
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #444;
+  width: 250px;
+  height: 100%;
+  padding: 3rem 1rem;
+  position: fixed;
+  top: 2rem; /* Align with bottom of navbar */
+  left: 0;
+}
+
+.sidebar ul {
+  list-style-type: none;
+}
+
+.sidebar li {
+  margin-bottom: 2rem;
+}
+
+.sidebar button {
+  background-color: #555;
+  color: white;
+  padding: 10px 20px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sidebar button:hover {
+  background-color: #777;
+}
+
+/* Main dashboard content */
+.dashboard-content {
+  margin-left: 250px; /* Same width as sidebar */
+  padding: 2rem;
+  flex-grow: 1;
+  background-color: #f4f4f4;
+}
