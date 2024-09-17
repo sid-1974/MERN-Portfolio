@@ -9,9 +9,11 @@ function Dashboard() {
   return (
     <Router>
       <div className="dashboard-container">
-        <nav className='dash-navbar'>
-          <h1 className='dashboard-h1'>Dashboard</h1>
-        </nav>
+      <nav className='dash-navbar'>
+  <h1 className='dashboard-h1'>Dashboard</h1>
+  <button className='logout-button'>Logout</button>
+</nav>
+
         
         <div className="sidebar">
           <ul>
