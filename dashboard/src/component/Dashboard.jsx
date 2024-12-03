@@ -1,37 +1,50 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React, { useState } from "react";
 import "../css/Dashboard.css";
-import AddPost from './AddPost';
-import EditPost from './EditPost';
-import DeletePost from './DeletePost';
+import AddPost from "./AddPost"; // Import AddPost component
+import EditPost from "./EditPost"; // Import EditPost component
+import DeletePost from "./DeletePost"; // Import DeletePost component
 
 function Dashboard() {
-  return (
-    <Router>
-      <div className="dashboard-container">
-      <nav className='dash-navbar'>
-  <h1 className='dashboard-h1'>Dashboard</h1>
-  <button className='logout-button'>Logout</button>
-</nav>
+  const [activeComponent, setActiveComponent] = useState(null);
 
-        
+  return (
+    <>
+      <div className="dashboard-container">
+        {/* Navbar */}
+        <nav className="dash-navbar">
+          <h1 className="dashboard-h1">Dashboard</h1>
+          <button className="logout-button">Logout</button>
+        </nav>
+
+        {/* Sidebar */}
         <div className="sidebar">
           <ul>
-            <li><Link to="/add-post"><button>Add Post</button></Link></li>
-            <li><Link to="/edit-post"><button>Edit Post</button></Link></li>
-            <li><Link to="/delete-post"><button>Delete Post</button></Link></li>
+            <li>
+              <button onClick={() => setActiveComponent("addPost")}>
+                Add Post
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setActiveComponent("editPost")}>
+                Edit Post
+              </button>
+            </li>
+            <li>
+              <button onClick={() => setActiveComponent("deletePost")}>
+                Delete Post
+              </button>
+            </li>
           </ul>
         </div>
-        
-        <div className="dashboard-content">
-          <Routes>
-            <Route path="/add-post" element={<AddPost />} />
-            <Route path="/edit-post" element={<EditPost />} />
-            <Route path="/delete-post" element={<DeletePost />} />
-          </Routes>
+
+        {/* Main Content Area */}
+        <div className="main-content" style={{margin: "auto"}}>
+          {activeComponent === "addPost" && <AddPost />}
+          {activeComponent === "editPost" && <EditPost />}
+          {activeComponent === "deletePost" && <DeletePost />}
         </div>
       </div>
-    </Router>
+    </>
   );
 }
 
