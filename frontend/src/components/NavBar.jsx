@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-scroll';
+import { Link } from "react-scroll";
 import "../css/Main.css";
 import HamburgerButton from './HamburgerButton';
 

@@ -8,7 +8,7 @@ import EditPost from './component/EditPost';
 import DeletePost from './component/DeletePost';
 
 function App() {
-  const isAuthenticated = true; // Replace with your actual authentication logic
+  const isAuthenticated = false; // Replace with your actual authentication logic
 
   return (
     <BrowserRouter>
