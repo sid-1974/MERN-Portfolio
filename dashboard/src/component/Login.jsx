@@ -1,23 +1,32 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/Login.css";
 
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const predefinedUsername = "admin";
+  const predefinedPassword = "12345";
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Form submitted");
     if (!username || !password) {
       setError("Both fields are required.");
-    } else {
+    } else if (username === predefinedUsername && password === predefinedPassword) {
       setError("");
-      console.log("Username:", username);
-      console.log("Password:", password);
+      localStorage.setItem("authToken", "true"); // Save auth token
+      setIsAuthenticated(true); // Update authentication state
       alert("Login successful!");
+      navigate("/dashboard", { replace: true });
+    } else {
+      setError("Invalid username or password.");
     }
   };
-
+  
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleSubmit}>
